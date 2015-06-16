@@ -9,4 +9,4 @@ Vimrc1234567 is a great package that automatically installs some very useful
 plugins and even takes care of some of the configuration for you. making it very
 easy to vim up and running.
 
-[Vimrc1234567] (https://github.com/Anthony1234567/Vimrc1234567)
+Link to [Vimrc1234567] (https://github.com/Anthony1234567/Vimrc1234567)
