@@ -10,3 +10,7 @@ plugins and even takes care of some of the configuration for you. making it very
 easy to vim up and running.
 
 Link to [Vimrc1234567] (https://github.com/Anthony1234567/Vimrc1234567)
+
+Copy and paste this into a terminal window:
+
+> bash install.sh
