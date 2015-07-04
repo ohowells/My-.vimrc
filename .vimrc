@@ -8,8 +8,6 @@ filetype on                   " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -43,7 +41,6 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " faster update time
 set updatetime=700
@@ -72,7 +69,6 @@ set paste
 "UI Config
 set number			"line number
 set showmatch		"highlight matching [({})]
-set mat=2			"for showmatch, set how many tenth of second it blinks
 set ruler			"show current position
 set magic			"magic for regular expression
 set confirm			"ask to save file
@@ -103,13 +99,6 @@ highlight GitGutterChangeDelete ctermfg=red ctermbg=235
 set incsearch			   "search as char are entered
 set hlsearch			   "highlight matches
 set smartcase			   "smart with case search
-
-"Folding
-set foldenable	      "enable folds
-set foldlevelstart=10 "prevent too many folds
-set foldmethod=indent "set fold based on indentation
-"can also be marker, manual, expr, syntax, or diff
-"check :help for more information
 
 "Movement
 set mouse=a				     "mouse support in console (option + mouseclick for mac users)
@@ -164,8 +153,7 @@ let g:syntastic_cpp_compiler = 'clang++' " C++ compiler
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' " C++11 support
 let g:syntastic_cpp_compiler_options = ' -std=c++1y' " C++14 support
 
-"NERDTree
-" autocmd vimenter * NERDTree
+" NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary")
@@ -174,8 +162,7 @@ map <C-n> :NERDTreeToggle<CR>
 " vim-markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown    " *.md support
 
-"spelling
-"map <C-a> :set spell! <CR>
+" spelling
 :nnoremap <C-a> :set spell!<CR>
 
 " automatic Whitespace removal
