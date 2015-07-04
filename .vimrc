@@ -20,7 +20,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'bling/vim-airline'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
@@ -180,4 +179,4 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown    " *.md support
 :nnoremap <C-a> :set spell!<CR>
 
 " automatic Whitespace removal
-autocmd VimEnter,BufReadPost,bufwritepost,bufenter * :FixWhitespace
+autocmd BufWritePre * :%s/\s\+$//e
