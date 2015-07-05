@@ -126,7 +126,7 @@ let g:airline_theme='tomorrow'
 function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode',' ','branch'])
     let g:airline_section_b = airline#section#create_left(['%F'])
-    let g:airline_section_c = airline#section#create(['[%Y]'])
+    let g:airline_section_c = airline#section#create(['%Y'])
     let g:airline_section_x = airline#section#create(['%P'])   "P
     let g:airline_section_y = airline#section#create(['row:%l/%L'])
     let g:airline_section_z = airline#section#create_right(['col:%03c'])
