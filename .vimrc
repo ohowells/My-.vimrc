@@ -1,5 +1,3 @@
-"auto reload .vimrc when changed, this avoids reopening vim
-autocmd! bufwritepost .vimrc source %
 set shell=/bin/bash
 
 set nocompatible              " be iMproved, required
@@ -16,15 +14,15 @@ Plugin 'gmarik/Vundle.vim'
 " ----------------------------------------------------------
 "Plugin 'edkolev/promptline.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'bling/vim-airline'
-Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'freeo/vim-kalisi'
+Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-fugitive'
 " ------------------------------------------------------------
 "
@@ -45,37 +43,28 @@ filetype plugin indent on    " required
 " faster update time
 set updatetime=700
 
-" commenting
-set comments=sl:/*,mb:\ *,elx:\ */
-set wildmode=longest:full
-set wildmenu
-set t_Co=256
-
 syntax on
-colorscheme kalisi
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-monokai
 set background=dark
 
 "tabs and spaces
-set shiftwidth=4	"1 tab == 2 spaces
-set tabstop=4		"<TAB> == 2 spaces
-set softtabstop=4	"<TAB> and backspace
+set paste           
+set shiftwidth=4	"1 tab == 4 spaces
+set tabstop=4		"<TAB> == 4 spaces
 set smarttab		"smart tab
 set autoindent		"set auto indent
-set smartindent		"set smart indent
-set copyindent		"use exisiting indents for new indents
+set expandtab
+set cindent			"stricter indent rules for c type languages
 set preserveindent	"save as much indent structure as possible
-set paste
 
 "UI Config
 set number			"line number
 set showmatch		"highlight matching [({})]
-set ruler			"show current position
 set magic			"magic for regular expression
 set confirm			"ask to save file
 set showcmd			"display incomplete command in the lower right corner of the console
 set undolevels=1000	"let vim allow 1000 undos
-set lazyredraw
-" do not work in hammer. Uncomment for those not on hammer server
 set colorcolumn=100
 highlight ColorColumn ctermbg=236
 
@@ -104,7 +93,6 @@ set smartcase			   "smart with case search
 set mouse=a				     "mouse support in console (option + mouseclick for mac users)
 set mousehide				 "hide cursor when typing
 set scrolloff=5		         "minimum lines to keep above and below
-set ttymouse=xterm2
 
 "instant markdown
 filetype plugin on          "required
@@ -118,7 +106,7 @@ noremap ; :
 " airline UI
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='kalisi'
+let g:airline_theme='base16'
 
 function! AirlineInit()
 	let g:airline_section_a = airline#section#create(['mode',' ','branch'])
@@ -165,5 +153,15 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown    " *.md support
 " spelling
 :nnoremap <C-a> :set spell!<CR>
 
+" YouCompleteMe file
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 " automatic Whitespace removal
-autocmd BufWritePre * :%s/\s\+$//e
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType cpp,h, autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
