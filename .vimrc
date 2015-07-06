@@ -17,7 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins to be managed by Vundle
 " ----------------------------------------------------------
-"Plugin 'edkolev/promptline.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-markdown'
@@ -67,6 +66,7 @@ syntax on
 
 "tabs and spaces
 set paste
+set pastetoggle=<F2>
 set shiftwidth=4    "1 tab == 4 spaces
 set tabstop=4       "<TAB> == 4 spaces
 set smarttab        "smart tab
