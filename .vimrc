@@ -1,8 +1,6 @@
 " auto reload .vimrc when changed, this avoids reopening vim
 autocmd! bufwritepost .vimrc source %
 
-set shell=/bin/bash
-
 set nocompatible    " be iMproved, required
 filetype on         " required
 
