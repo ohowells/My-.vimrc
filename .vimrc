@@ -1,4 +1,4 @@
-" auto reload .vimrc when changed, this avoids reopening vim
+"auto reload .vimrc when changed, this avoids reopening vim
 autocmd! bufwritepost .vimrc source %
 
 set nocompatible    " be iMproved, required
@@ -41,7 +41,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
 
 " set UTF-8 encoding
 set enc=utf-8
@@ -100,6 +99,9 @@ set cmdheight=2
 
 noremap ; :
 
+" autoclose
+let g:AutoClosePairs = "() {} [] '' "
+
 " git-gutter
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
@@ -120,6 +122,8 @@ highlight GitGutterChangeDelete ctermfg=red ctermbg=235
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode',' ','branch'])
